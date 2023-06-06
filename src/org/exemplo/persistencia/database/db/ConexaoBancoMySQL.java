@@ -21,6 +21,7 @@ public class ConexaoBancoMySQL implements IConnection{
 		DB_USER = ConfigLoader.loadConfig().getProperty("DB_USER");
 		DB_PASSWORD = ConfigLoader.loadConfig().getProperty("DB_PASSWORD");
 	}
+	
 	private Connection connection;
 	
 	public Connection getConnection() {

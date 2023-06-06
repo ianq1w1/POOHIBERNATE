@@ -14,6 +14,8 @@ public class Paciente {
 	
 	public Paciente() {};
 	
+	public Paciente(Integer id) {this.id = id;};
+	
 	public Paciente(Integer id, String nome, Float altura, Float peso) {
 		super();
 		this.id = id;
