@@ -2,12 +2,26 @@ package org.exemplo.persistencia.database.model;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "exame")
 public class Exame {
 
+	@Id
 	private Integer id;
+	@Column (name="nome")
 	private String nome;
+	@Column (name="descricao")
 	private String descricao;
-	private Integer idPaciente;
+	@ManyToOne
+    @JoinColumn(name = "idPaciente")
+	private Paciente paciente;
 	
 	public Exame() {
 		// TODO Auto-generated constructor stub
@@ -20,12 +34,13 @@ public class Exame {
 		this.descricao = descricao;
 	}
 	
-	public Exame(Integer id, String nome, String descricao, Integer idPaciente) {
+	public Exame(Integer id, String nome, String descricao, Paciente p) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.idPaciente = idPaciente;
+		this.paciente = p;
+
 	}
 
 	public Integer getId() {
@@ -57,12 +72,13 @@ public class Exame {
 		return Objects.hash(id);
 	}
 	
-	public Integer getIdPaciente() {
-		return idPaciente;
+
+	public Paciente getPaciente() {
+		return paciente;
 	}
 	
-	public void setIdPaciente(Integer idPaciente) {
-		this.idPaciente = idPaciente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 	@Override

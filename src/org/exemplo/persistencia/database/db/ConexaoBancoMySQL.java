@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.exemplo.persistencia.database.util.ConfigLoader;
+import org.hibernate.SessionFactory;
 
 public class ConexaoBancoMySQL implements IConnection{
 
@@ -43,5 +44,12 @@ public class ConexaoBancoMySQL implements IConnection{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	public SessionFactory getSessionFactory() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

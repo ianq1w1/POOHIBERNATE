@@ -4,12 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Entity;
+
+@javax.persistence.Entity
+@Table(name="paciente")
 public class Paciente {
 
+	@Id
 	private Integer id;
+	@Column(name = "nome")
 	private String nome;
+	@Column(name = "altura")
 	private Float altura;
+	@Column(name = "peso")
 	private Float peso;
+	
+	@OneToMany (mappedBy = "paciente")
 	private List<Exame> exames;
 	
 	public Paciente() {};

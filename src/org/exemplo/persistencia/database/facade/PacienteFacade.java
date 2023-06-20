@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.exemplo.persistencia.database.dao.IEntityDAO;
 import org.exemplo.persistencia.database.dao.PacienteDAO;
+import org.exemplo.persistencia.database.db.ConexaoBancoHibernate;
 import org.exemplo.persistencia.database.db.ConexaoBancoMySQL;
 import org.exemplo.persistencia.database.model.Exame;
 import org.exemplo.persistencia.database.model.Paciente;
@@ -14,7 +15,7 @@ public class PacienteFacade {
 	private static PacienteFacade instance;
 
 	private PacienteFacade() {
-		pacienteDao = new PacienteDAO(new ConexaoBancoMySQL());
+		pacienteDao = new PacienteDAO(new ConexaoBancoHibernate());
 	}
 
 	public static PacienteFacade getInstance() {
