@@ -3,6 +3,7 @@ package org.exemplo.persistencia.database.model;
 //import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -15,8 +16,7 @@ import org.hibernate.annotations.Entity;
 @Table(name="cliente")
 public class Cliente {
 
-	@Id
-	private Integer id;
+	@Id Integer id;
 	@Column(name = "nome")
 	private String nome;
 	@Column(name = "cpf")
@@ -28,11 +28,9 @@ public class Cliente {
 	
 	public Cliente() {};
 	
-	public Cliente(Integer id) {this.id = id;};
 	
-	public Cliente(Integer id, String nome, String cpf) {
+	public Cliente(String nome, String cpf) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 	}
@@ -82,5 +80,10 @@ public class Cliente {
 			return false;
 		Cliente other = (Cliente) obj;
 		return Objects.equals(id, other.id);
+	}
+	
+	public void randomID() {
+		Random random = new Random();
+		this.id = random.nextInt(10000);
 	}
 }
