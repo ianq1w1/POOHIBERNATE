@@ -1,20 +1,20 @@
 package org.exemplo.persistencia.database.application;
 
-import org.exemplo.persistencia.database.dao.ExameDAO;
+//import org.exemplo.persistencia.database.dao.ExameDAO;
 import org.exemplo.persistencia.database.dao.IEntityDAO;
-import org.exemplo.persistencia.database.dao.PacienteDAO;
+import org.exemplo.persistencia.database.dao.ClienteDAO;
 import org.exemplo.persistencia.database.db.ConexaoBancoHibernate;
-import org.exemplo.persistencia.database.model.Exame;
-import org.exemplo.persistencia.database.model.Paciente;
+//import org.exemplo.persistencia.database.model.Exame;
+import org.exemplo.persistencia.database.model.Cliente;
 
 public class Application {
 
 	public static void main(String[] args) {
 		
-		IEntityDAO<Paciente> daoPac = new PacienteDAO(new ConexaoBancoHibernate());
+	/*	IEntityDAO<Cliente> daoPac = new ClienteDAO(new ConexaoBancoHibernate());
 		IEntityDAO<Exame> daoExa = new ExameDAO(new ConexaoBancoHibernate());
 		
-		Paciente p = daoPac.findById(3);
+		Cliente p = daoPac.findById(3);
 		
 		Exame e = p.localeById(8);
 		
@@ -38,5 +38,6 @@ public class Application {
 //			}
 //		});
 //		
+	}*/
 	}
 }

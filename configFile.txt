@@ -1,8 +1,8 @@
 DB_ADDRESS = localhost
 DB_PORT = 3306
-DB_SCHEMA = prontuario
+DB_SCHEMA = banco 
 DB_USER = root
-DB_PASSWORD = root123
+DB_PASSWORD = 35424665ian
 HIBERNATE_DRIVE_CLASS=com.mysql.jdbc.Driver
 HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5Dialect
 HIBERNATE_SHOW_SQL=false

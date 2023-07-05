@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.exemplo.persistencia.database.model.Exame;
-import org.exemplo.persistencia.database.model.Paciente;
+//import org.exemplo.persistencia.database.model.Exame;
+import org.exemplo.persistencia.database.model.Cliente;
 import org.exemplo.persistencia.database.util.ConfigLoader;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -56,8 +56,8 @@ public class ConexaoBancoHibernate implements IConnection{
                 configuration.setProperty("hibernate.show_sql", HIBERNATE_SHOW_SQL);
 
                 // Add annotated classes or XML mappings
-                configuration.addAnnotatedClass(Paciente.class);
-                configuration.addAnnotatedClass(Exame.class);
+                configuration.addAnnotatedClass(Cliente.class);
+                
 
                 // Create StandardServiceRegistryBuilder
                 StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();

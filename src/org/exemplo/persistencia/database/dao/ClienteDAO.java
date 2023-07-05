@@ -12,23 +12,22 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.exemplo.persistencia.database.db.IConnection;
-import org.exemplo.persistencia.database.model.Exame;
-import org.exemplo.persistencia.database.model.Paciente;
+//import org.exemplo.persistencia.database.model.Exame;
+import org.exemplo.persistencia.database.model.Cliente;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class PacienteDAO implements IEntityDAO<Paciente>{
+public class ClienteDAO implements IEntityDAO<Cliente>{
 
 	private IConnection conn;
-	private IEntityDAO<Exame> exameDAO;
+
 	
-	public PacienteDAO(IConnection conn) {
+	public ClienteDAO(IConnection conn) {
 		this.conn = conn;
-		exameDAO = new ExameDAO(conn);
 	}
 	
-	public void save(Paciente p) {
+	public void save(Cliente p) {
 		Session session = conn.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.persist(p);
@@ -36,7 +35,7 @@ public class PacienteDAO implements IEntityDAO<Paciente>{
 		session.close();
 	}
 	
-	public void delete(Paciente p) {
+	public void delete(Cliente p) {
 		Session session = conn.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(p);
@@ -44,7 +43,7 @@ public class PacienteDAO implements IEntityDAO<Paciente>{
 		session.close();
 	}
 	
-	public void update(Paciente p) {
+	public void update(Cliente p) {
 		Session session = conn.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.merge(p);
@@ -53,18 +52,18 @@ public class PacienteDAO implements IEntityDAO<Paciente>{
 		
 	}
 	
-	public Paciente findById(Integer id) {
+	public Cliente findById(Integer id) {
 		Session session = conn.getSessionFactory().openSession();
-		Paciente temp = session.find(Paciente.class, id);
+		Cliente temp = session.find(Cliente.class, id);
 		return temp;
 	}
 
 	@Override
-	public List<Paciente> findAll() {
+	public List<Cliente> findAll() {
 		Session session = conn.getSessionFactory().openSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Paciente> query = builder.createQuery(Paciente.class);
-        Root<Paciente> root = query.from(Paciente.class);
+        CriteriaQuery<Cliente> query = builder.createQuery(Cliente.class);
+        Root<Cliente> root = query.from(Cliente.class);
         query.select(root);
         return session.createQuery(query).getResultList();
 	}
