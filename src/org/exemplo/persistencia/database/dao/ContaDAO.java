@@ -13,6 +13,7 @@ import org.exemplo.persistencia.database.model.Cliente;
 import org.exemplo.persistencia.database.model.Conta;
 //import org.exemplo.persistencia.database.model.Transacao;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 public class ContaDAO implements IEntityDAO<Conta> {
 
@@ -34,7 +35,9 @@ public class ContaDAO implements IEntityDAO<Conta> {
 	
 	public Conta findById(Integer id) {
 		Session session = conn.getSessionFactory().openSession();
-		return session.find(Conta.class, id);
+		Conta c = session.find(Conta.class, id);
+		session.close();
+		return c;
 	}
 
 	
@@ -69,9 +72,30 @@ public class ContaDAO implements IEntityDAO<Conta> {
 	}
 
 	
+
+
+
+	@Override
+	public void closeSession() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public Cliente findByCpf2(String cpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
 	public Cliente findByCpf(String cpf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 }
 

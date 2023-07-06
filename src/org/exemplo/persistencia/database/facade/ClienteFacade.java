@@ -33,8 +33,13 @@ public class ClienteFacade {
 		clienteDao.save(new Cliente(nome, cpf));
 	}
 
-	public void delete(Integer id, String nome, String cpf) {
-		clienteDao.delete(new Cliente(id, nome, cpf));
+	public void delete(Integer id) {
+	    Cliente cliente = clienteDao.findById(id);
+	    if (cliente != null) {
+	        clienteDao.delete(cliente);
+	    } else {
+	        System.out.println("Cliente não encontrado");
+	    }
 	}
 
 	public void update(Integer id, String nome, String cpf, List<Conta> Contas) {

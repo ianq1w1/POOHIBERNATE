@@ -201,6 +201,7 @@ public class Conta {
 			} else {
 				System.out.println("Valor invalido para saque");
 			}
+			
 		} else {
 			System.out.println("Operação não permitida. Conta desativada.");
 		}
@@ -228,9 +229,9 @@ public class Conta {
 				c.setSaldo(c.getSaldo().add(quantia));
 				
 			} else 
-				System.out.println("Saldo insuficiente para realizar transferencia.");
+				System.out.println("saldo insuficiente para realizar transferencia.");
 			} else {
-				System.out.println("Operação não pode ser realixado entre contas desativadas.");
+				System.out.println("operação não pode ser realizada entre contas desativadas.");
 			}
 		}
 	

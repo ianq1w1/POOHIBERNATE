@@ -14,6 +14,7 @@ import javax.persistence.criteria.Root;
 import org.exemplo.persistencia.database.db.IConnection;
 //import org.exemplo.persistencia.database.model.Exame;
 import org.exemplo.persistencia.database.model.Cliente;
+import org.exemplo.persistencia.database.model.Conta;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -70,11 +71,30 @@ public class ClienteDAO implements IEntityDAO<Cliente>{
         return session.createQuery(query).getResultList();
 	}
 	
+	
 	public Cliente findByCpf(String cpf) {
 		Session session = conn.getSessionFactory().openSession();
-		String hql = "FROM Cliente WHERE cpf = :cpf";
+		String hql = "SELECT c FROM Cliente c LEFT JOIN FETCH c.contas WHERE c.cpf = :cpf";
+		Query<Cliente> query = session.createQuery(hql, Cliente.class);
+		query.setParameter("cpf", cpf);
+		Cliente c = query.uniqueResult();
+		session.close();
+		return c;
+	}
+	
+	public Cliente findByCpf2(String cpf) {
+		Session session = conn.getSessionFactory().openSession();
+		String hql = "SELECT c FROM Cliente c LEFT JOIN FETCH c.contas WHERE c.cpf = :cpf";
 		Query<Cliente> query = session.createQuery(hql, Cliente.class);
 		query.setParameter("cpf", cpf);
 		return query.uniqueResult();
 	}
+
+	@Override
+	public void closeSession() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

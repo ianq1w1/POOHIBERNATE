@@ -8,6 +8,7 @@ import javax.persistence.criteria.Root;
 
 import org.exemplo.persistencia.database.db.IConnection;
 import org.exemplo.persistencia.database.model.Cliente;
+import org.exemplo.persistencia.database.model.Conta;
 //import org.exemplo.persistencia.database.model.Conta;
 import org.exemplo.persistencia.database.model.Transacao;
 import org.hibernate.Session;
@@ -70,5 +71,25 @@ public class TransacaoDAO implements IEntityDAO<Transacao>{
         query.select(root);
         return session.createQuery(query).getResultList();
 	}
+
+
+
+	@Override
+	public void closeSession() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public Cliente findByCpf2(String cpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 
 }
