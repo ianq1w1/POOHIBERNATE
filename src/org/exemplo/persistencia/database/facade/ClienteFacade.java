@@ -8,6 +8,7 @@ import org.exemplo.persistencia.database.db.ConexaoBancoHibernate;
 import org.exemplo.persistencia.database.db.ConexaoBancoMySQL;
 //import org.exemplo.persistencia.database.model.Exame;
 import org.exemplo.persistencia.database.model.Cliente;
+import org.exemplo.persistencia.database.model.Conta;
 
 public class ClienteFacade {
 
@@ -29,15 +30,15 @@ public class ClienteFacade {
 	}
 
 	public void save(Integer id, String nome, String cpf) {
-		clienteDao.save(new Cliente(id, nome, cpf));
+		clienteDao.save(new Cliente(nome, cpf));
 	}
 
-	public void delete(Integer id) {
-		clienteDao.delete(new Cliente(id));
+	public void delete(Integer id, String nome, String cpf) {
+		clienteDao.delete(new Cliente(id, nome, cpf));
 	}
 
-	public void update(Integer id, String nome, String cpf) {
-		clienteDao.update(new Cliente(id, nome, cpf));
+	public void update(Integer id, String nome, String cpf, List<Conta> Contas) {
+		clienteDao.update(new Cliente(nome, cpf));
 
 	}
 

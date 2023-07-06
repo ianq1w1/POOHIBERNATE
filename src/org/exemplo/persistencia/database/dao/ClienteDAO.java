@@ -1,12 +1,12 @@
 package org.exemplo.persistencia.database.dao;
 
-import java.sql.PreparedStatement;
+//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import org.hibernate.query.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -17,6 +17,8 @@ import org.exemplo.persistencia.database.model.Cliente;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+
 
 public class ClienteDAO implements IEntityDAO<Cliente>{
 
@@ -66,5 +68,13 @@ public class ClienteDAO implements IEntityDAO<Cliente>{
         Root<Cliente> root = query.from(Cliente.class);
         query.select(root);
         return session.createQuery(query).getResultList();
+	}
+	
+	public Cliente findByCpf(String cpf) {
+		Session session = conn.getSessionFactory().openSession();
+		String hql = "FROM Cliente WHERE cpf = :cpf";
+		Query<Cliente> query = session.createQuery(hql, Cliente.class);
+		query.setParameter("cpf", cpf);
+		return query.uniqueResult();
 	}
 }
